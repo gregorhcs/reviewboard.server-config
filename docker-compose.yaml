@@ -81,36 +81,6 @@ version: '3.7'
 
 
 services:
-  # The backend MySQL database server.
-  #
-  # This is accessed directly by Review Board.
-  #
-  # In production, this should be shared across all Review Board instances.
-  db:
-    image: mysql:8
-    environment:
-      # The name of the MySQL database storing Review Board content.
-      - MYSQL_DATABASE=reviewboard
-
-      # The MySQL username for Review Board.
-      - MYSQL_USER=reviewboard
-
-      # The MySQL password for Review Board.
-      #
-      # CHANGEME: Use a strong password!
-      - MYSQL_PASSWORD=reviewboard123
-
-      # The root MySQL password.
-      #
-      # CHANGEME: Use a strong password!
-      - MYSQL_ROOT_PASSWORD=admin123
-
-    volumes:
-      - db_data:/var/lib/mysql
-
-    restart: 'on-failure'
-
-
   # The backend memory caching server.
   #
   # This is accessed directly by Review Board.
@@ -148,7 +118,7 @@ services:
       #
       # CHANGEME: You should use your actual name here. It's used for
       #           internal state and your in-app support page.
-      - COMPANY=Docker Compose Test
+      - COMPANY=Strayfarer
 
       # CHANGEME: Set this to the database username above.
       - DATABASE_USERNAME=reviewboard
@@ -157,10 +127,13 @@ services:
       - DATABASE_PASSWORD=reviewboard123
 
       # CHANGEME: Set this to your accessible domain name.
-      - DOMAIN=localhost
+      - DOMAIN=mysql
 
     volumes:
       - sitedir:/site
+      
+    networks:
+      - mysql
 
   # The frontend nginx web server.
   #
@@ -192,5 +165,8 @@ services:
 
 
 volumes:
-  db_data:
   sitedir:
+
+networks:
+  mysql:
+    external: true
