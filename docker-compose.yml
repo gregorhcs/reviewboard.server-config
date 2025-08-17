@@ -100,6 +100,9 @@ services:
       # CHANGEME: Set this to a suitable amount for your server. We recommend
       #           at least 2GB in production (2048).
       - -m 128
+      
+    networks:
+      - default
 
 
   # The backend Review Board server.
@@ -131,7 +134,7 @@ services:
       - DATABASE_PASSWORD=reviewboard123
 
       # CHANGEME: Set this to your accessible domain name.
-      - DOMAIN=mysql
+      - DOMAIN=localhost
       
       - MEMCACHED_SERVER=reviewboard_memcached
 
@@ -139,6 +142,7 @@ services:
       - sitedir:/site
       
     networks:
+      - default
       - mysql
 
   # The frontend nginx web server.
@@ -169,11 +173,15 @@ services:
     volumes:
       - sitedir:/var/www/reviewboard
       - ./nginx_templates:/etc/nginx/templates
+      
+    networks:
+      - default
 
 
 volumes:
   sitedir:
 
 networks:
+  default:
   mysql:
     external: true
