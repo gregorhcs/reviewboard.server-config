@@ -118,6 +118,9 @@ services:
       # CHANGEME: You should use your actual name here. It's used for
       #           internal state and your in-app support page.
       - COMPANY=Strayfarer
+      
+      # CHANGEME: Set this to the database host.
+      - DATABASE_SERVER=mysql
 
       # CHANGEME: Set this to the database username above.
       - DATABASE_USERNAME=reviewboard
