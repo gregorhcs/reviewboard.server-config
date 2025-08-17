@@ -88,6 +88,7 @@ services:
   # In production, this should be shared across all Review Board instances,
   # and should be configured with at least 2GB of RAM.
   memcached:
+    container_name: reviewboard_memcached
     image: memcached:alpine
     restart: 'on-failure'
 
@@ -106,6 +107,7 @@ services:
   # This should not be accessed directly. Instead, please access the frontend
   # nginx server.
   reviewboard:
+    container_name: reviewboard
     image: beanbag/reviewboard:7.0
     depends_on:
       - memcached
@@ -144,6 +146,7 @@ services:
   #
   # This is the server you will access for Review Board.
   nginx:
+    container_name: reviewboard_nginx
     image: nginx:alpine
     restart: always
     depends_on:
