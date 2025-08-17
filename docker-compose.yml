@@ -108,7 +108,6 @@ services:
   reviewboard:
     image: beanbag/reviewboard:7.0
     depends_on:
-      - db
       - memcached
 
     environment:
