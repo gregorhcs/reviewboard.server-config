@@ -132,6 +132,8 @@ services:
 
       # CHANGEME: Set this to your accessible domain name.
       - DOMAIN=mysql
+      
+      - MEMCACHED_SERVER=reviewboard_memcached
 
     volumes:
       - sitedir:/site
