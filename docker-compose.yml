@@ -109,6 +109,9 @@ services:
     volumes:
       - db_data:/var/lib/mysql
 
+    networks:
+      - default
+
     restart: 'on-failure'
 
 
@@ -131,6 +134,9 @@ services:
       # CHANGEME: Set this to a suitable amount for your server. We recommend
       #           at least 2GB in production (2048).
       - -m 128
+
+    networks:
+      - default
 
 
   # The backend Review Board server.
@@ -169,6 +175,9 @@ services:
     volumes:
       - sitedir:/site
 
+    networks:
+      - default
+
   # The frontend nginx web server.
   #
   # This serves up static media (CSS, JavaScript, and images), and forwards
@@ -200,7 +209,15 @@ services:
     volumes:
       - sitedir:/var/www/reviewboard
 
+    networks:
+      - default
+      - vhosts
 
 volumes:
   db_data:
   sitedir:
+
+networks:
+  default:
+  vhosts:
+    external: true
