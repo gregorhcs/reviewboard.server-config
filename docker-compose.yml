@@ -177,7 +177,7 @@ services:
   # This is the server you will access for Review Board.
   nginx:
     container_name: reviewboard_nginx
-    image: nginx:alpine
+    build: nginx
     restart: always
     depends_on:
       - reviewboard
@@ -196,7 +196,6 @@ services:
 
     volumes:
       - sitedir:/var/www/reviewboard
-      - ./nginx_templates:/etc/nginx/templates
 
 
 volumes:
