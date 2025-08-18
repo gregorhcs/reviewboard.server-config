@@ -87,6 +87,7 @@ services:
   #
   # In production, this should be shared across all Review Board instances.
   db:
+    container_name: reviewboard_db
     image: mysql:8
     environment:
       # The name of the MySQL database storing Review Board content.
