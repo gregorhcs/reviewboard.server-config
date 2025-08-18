@@ -160,7 +160,7 @@ services:
       - DATABASE_PASSWORD=reviewboard123
 
       # CHANGEME: Set this to your accessible domain name.
-      - DOMAIN=localhost
+      - DOMAIN=reviewboard.slothsoft.net
       
       - MEMCACHED_SERVER=reviewboard_memcached
       
@@ -184,15 +184,12 @@ services:
 
     environment:
       # CHANGEME: Set this to your accessible domain name above.
-      - NGINX_HOST=localhost
+      - NGINX_HOST=reviewboard.slothsoft.net
 
       # The public port used to access this instance.
       #
       # If changed, you will need to change 'ports' below to match.
       - NGINX_PORT=80
-
-    ports:
-      - 8042:80
 
     volumes:
       - sitedir:/var/www/reviewboard
