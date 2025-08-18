@@ -161,6 +161,10 @@ services:
 
       # CHANGEME: Set this to your accessible domain name.
       - DOMAIN=localhost
+      
+      - MEMCACHED_SERVER=reviewboard_memcached
+      
+      - DATABASE_SERVER=reviewboard_db
 
     volumes:
       - sitedir:/site
